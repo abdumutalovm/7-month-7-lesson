@@ -28,7 +28,7 @@ function Section() {
                             <img src={el.attributes.image} alt={el.attributes.title} className='rounded-xl h-[192px] object-cover' />
                             <div className="card-body text-center text-darkBlue">
                                 <h2 className="card-title mx-auto">{el.attributes.title}</h2>
-                                <p>$ {el.attributes.price}</p>
+                                <p>$ {el.attributes.price / 100}</p>
                             </div>
                         </div>
                     ))
