@@ -1,9 +1,10 @@
 import React from 'react'
+import Header from '../componets/Header'
 
 function Layout({ children }) {
     return (
         <div>
-            <header>Header Section</header>
+            <Header></Header>
             {children}
         </div>
     )
