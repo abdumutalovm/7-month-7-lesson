@@ -11,13 +11,18 @@ import Card from "../componets/Card";
 function Home() {
     const theme = useContext(ThemeContext);
     const [featured, setFeatured] = useState([]);
+    const [loader, setLoader] = useState(false);
 
     useEffect(() => {
+        setLoader(true);
         fetch(`https://strapi-store-server.onrender.com/api/products?featured=true`)
             .then(res => res.json())
             .then(data => { setFeatured(data.data) })
             .catch(err => {
                 console.log(err);
+            })
+            .finally(() => {
+                setLoader(false);
             })
     }, [])
 
@@ -56,7 +61,10 @@ function Home() {
 
                     <div className="featured-wrapper flex items-center gap-4 mt-11">
                         {
-                            featured.length > 0 && featured.map((el, index) => {
+                            loader && <span className="loading loading-ring loading-lg mx-auto block mt-20"></span>
+                        }
+                        {
+                            !loader && featured.length > 0 && featured.map((el, index) => {
                                 return (
                                     <Card key={index} data={el}></Card>
                                 )
