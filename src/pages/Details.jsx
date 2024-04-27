@@ -52,9 +52,6 @@ function Details() {
                             <h3 className={`mt-3 text-xl ${theme.theme == 'light' ? 'text-text1' : 'text-zinc-200'}`}>${data.data.attributes.price / 100}</h3>
                             <p className={`mt-6 leading-8 w-[512px] ${theme.theme == 'light' ? 'text-text1' : 'text-zinc-200'}`}>{data.data.attributes.description}</p>
 
-
-
-
                             <div className="form">
                                 <div className="colors flex gap-3">
                                     {
@@ -67,8 +64,6 @@ function Details() {
                                 </div>
                             </div>
                         </div>
-
-
                     </>
                 }
             </div>
