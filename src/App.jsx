@@ -36,8 +36,6 @@ function App() {
 
   }
 
-
-
   return (
     <div>
       <ThemeContext.Provider value={{ theme, setTheme }} >
