@@ -16,6 +16,7 @@ export default {
         'dMain2':'#414558',
         'dMain3':'#272935',
         'dMain4':'#2B3440',
+        'yellow':'#FFB86B',
 
 
         'text1':'#394E6A'
