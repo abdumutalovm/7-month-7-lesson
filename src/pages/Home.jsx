@@ -6,12 +6,15 @@ import bg2 from '../assets/bg2.webp'
 import bg3 from '../assets/bg3.webp'
 import bg4 from '../assets/bg4.webp'
 import Card from "../componets/Card";
+import { GridContext } from "./Products";
 
 
 function Home() {
     const theme = useContext(ThemeContext);
     const [featured, setFeatured] = useState([]);
     const [loader, setLoader] = useState(false);
+
+
 
     useEffect(() => {
         setLoader(true);
@@ -72,6 +75,7 @@ function Home() {
                         }
 
                     </div>
+
                 </div>
             </div>
         </div>
