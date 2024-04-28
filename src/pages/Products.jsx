@@ -123,7 +123,7 @@ function Products() {
             <div className="card-header flex items-center border-b border-base-300 justify-between pb-5 mt-10">
                 <p className="font-medium text-md text-text1">{data.length} products</p>
                 <div className="icons flex items-center gap-3">
-                    <span className={`rounded-full p-1 cursor-pointer transition ${theme.theme == 'light' ? 'bg-headerLogo text-zinc-300 hover:bg-[#0562FF]' : ''}`}><MdWindow className="text-2xl"></MdWindow></span>
+                    <span className={`rounded-full p-1 cursor-pointer transition ${theme.theme == 'light' ? 'bg-headerLogo text-zinc-300 hover:bg-[#0562FF]' : 'bg-hdLogo text-zinc-800 hover:bg-[#FF54C6]  '}`}><MdWindow className="text-2xl"></MdWindow></span>
                     <span className=""><HiOutlineMenu className=" text-xl"></HiOutlineMenu></span>
                 </div>
             </div>
