@@ -34,7 +34,7 @@ function Home() {
                     <div className="info w-[496px]">
                         <h1 className={`max-w-2xl text-4xl font-bold ${theme.theme == 'light' ? 'text-text1' : 'text-white'} tracking-tight sm:text-6xl`}>We are changing the way people shop</h1>
                         <p className="mt-8 mb-8 max-w-xl text-lg leading-8">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempore repellat explicabo enim soluta temporibus asperiores aut obcaecati perferendis porro nobis.</p>
-                        <Link to='/products' className={`btn text-sm uppercase   ${theme.theme == 'light' ? 'bg-headerLogo text-zinc-200  border-none hover:bg-[#069AFF]' : 'bg-hdLogo text-dMain3 border-none'}`}>Our products</Link>
+                        <Link to='/products' className={`btn text-sm uppercase   ${theme.theme == 'light' ? 'bg-headerLogo text-zinc-200  border-none hover:bg-[#069AFF]' : 'bg-hdLogo hover:bg-[#FF54C6] text-dMain3 border-none'}`}>Our products</Link>
                     </div>
                     <div className="slider w-[464px]">
                         <div className={`carousel carousel-center max-w-md p-4 space-x-4 ${theme.theme == 'light' ? 'bg-bgLogin' : 'bg-dMain2'} rounded-box`}>

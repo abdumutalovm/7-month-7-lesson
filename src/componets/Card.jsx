@@ -5,8 +5,9 @@ import { useNavigate } from 'react-router-dom';
 
 function Card(props) {
     const theme = useContext(ThemeContext);
-    const { image, title, price } = props.data.attributes;
+    const { image, title, price, company } = props.data.attributes;
     const { id } = props.data;
+    const { isGrid } = props;
     const navigate = useNavigate()
 
     function handleRedirect() {
@@ -15,12 +16,17 @@ function Card(props) {
 
     return (
 
-        <div onClick={handleRedirect} className={`card w-[352px] ${theme.theme == 'light' ? 'bg-white' : 'bg-dMain3'} pt-3 shadow-xl mb-20 cursor-pointer transition hover:shadow-2xl`}>
+        <div onClick={handleRedirect} className={`${isGrid ? 'w-[352px]' : 'w-[1088px] flex items-center flex-row p-3 shadow-lg hover:shadow-xl'} card  ${theme.theme == 'light' ? 'bg-white' : 'bg-dMain3'} pt-3 shadow-xl cursor-pointer transition hover:shadow-2xl ${isGrid ? 'mb-20' : 'mb-4'}`}>
             <figure>
-                <img src={image} alt="Shoes" className="rounded-xl object-cover w-[320px] h-[192px]" />
+                <img src={image} alt="Shoes" className={`rounded-xl object-cover  ${isGrid ? 'w-[320px] h-[192px]' : 'w-[128px] h-[128px]'}`} />
             </figure>
-            <div className="card-body items-center text-center">
-                <h2 className="card-title capitalize">{title}</h2>
+            <div className={`card-body  text-center ${isGrid ? 'items-center' : 'flex items-center flex-row justify-between'}`}>
+                <div>
+                    <h2 className="card-title capitalize">{title}</h2>
+                    {
+                        !isGrid && <h1 className='text-left'>{company}</h1>
+                    }
+                </div>
                 <h1 className='text-[16px]'>${price / 100}</h1>
             </div>
         </div>

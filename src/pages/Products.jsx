@@ -8,7 +8,7 @@ function Products() {
     const [price, setPrice] = useState(1000);
     const [shipping, setShipping] = useState(false);
     const [data, setData] = useState([]);
-    const [isGrid, setGrid] = useState();
+    const [isGrid, setGrid] = useState(true);
 
     const searchRef = useRef(null);
     const categoryRef = useRef(null);
@@ -122,19 +122,21 @@ function Products() {
 
             <div className="card-header flex items-center border-b border-base-300 justify-between pb-5 mt-10">
                 <p className="font-medium text-md text-text1">{data.length} products</p>
-                <div className="icons flex items-center gap-3">
-                    <span className={`rounded-full p-1 cursor-pointer transition ${theme.theme == 'light' ? 'bg-headerLogo text-zinc-300 hover:bg-[#0562FF]' : 'bg-hdLogo text-zinc-800 hover:bg-[#FF54C6]  '}`}><MdWindow className="text-2xl"></MdWindow></span>
-                    <span className=""><HiOutlineMenu className=" text-xl"></HiOutlineMenu></span>
+                <div className="icons flex items-center gap-1">
+                    <span onClick={() => setGrid(true)} className="cursor-pointer flex justify-center items-center hover:bg-zinc-200 rounded-full" style={isGrid ? { color: 'white', backgroundColor: '#057AFF', width: '40px', height: '40px', borderRadius: '50%' } : { width: '40px', height: '40px' }}><MdWindow className="text-2xl"></MdWindow></span>
+                    <span onClick={() => setGrid(false)} className="cursor-pointer flex justify-center items-center hover:bg-zinc-200 rounded-full" style={!isGrid ? {
+                        color: 'white', backgroundColor: '#057AFF', width: '40px', height: '40px', borderRadius: '50%'
+                    } : { width: '40px', height: '40px' }}><HiOutlineMenu className=" text-xl"></HiOutlineMenu></span>
                 </div>
             </div>
 
 
-            <div className="products flex justify-between my-20 gap-4 flex-wrap">
+            <div className={`products flex justify-between my-20 gap-4 flex-wrap ${isGrid ? 'flex-row' : 'flex-col'}`}>
 
                 {
                     data.length > 0 && data.map((el, index) => {
                         return (
-                            <Card key={index} data={el}></Card>
+                            <Card isGrid={isGrid} key={index} data={el}></Card>
                         )
                     })
                 }
