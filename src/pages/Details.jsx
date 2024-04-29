@@ -1,3 +1,5 @@
+import toast, { Toaster } from 'react-hot-toast';
+
 import { useEffect, useState } from "react";
 import { useNavigate, useParams, Link } from "react-router-dom";
 import { useContext } from "react";
@@ -11,6 +13,8 @@ function Details() {
     const params = useParams();
     const navigate = useNavigate();
     const theme = useContext(ThemeContext);
+
+    const notify = () => toast('Item added to cart ✔');
 
 
     useEffect(() => {
@@ -58,6 +62,7 @@ function Details() {
         const storedProducts = JSON.parse(localStorage.getItem('cart')) || [];
         storedProducts.push(productsData);
         localStorage.setItem('cart', JSON.stringify(storedProducts));
+        notify()
     }
 
     return (
@@ -114,7 +119,13 @@ function Details() {
                                                 </select>
                                             </div>
                                             <button className="btn btn-active btn-primary mt-8 uppercase" onClick={handleAddBag}>Add to bag</button>
-
+                                            <Toaster toastOptions={{
+                                                className: '',
+                                                style: {
+                                                    backgroundColor: 'green',
+                                                    color: 'white'
+                                                }
+                                            }} />
                                         </div>
                                     </div>
                                 </>
