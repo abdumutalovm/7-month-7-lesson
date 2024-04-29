@@ -7,6 +7,7 @@ import bg3 from '../assets/bg3.webp'
 import bg4 from '../assets/bg4.webp'
 import Card from "../componets/Card";
 import { GridContext } from "./Products";
+import { data } from "autoprefixer";
 
 
 function Home() {
@@ -14,6 +15,7 @@ function Home() {
     const [featured, setFeatured] = useState([]);
     const [loader, setLoader] = useState(false);
 
+    const grid = useContext(GridContext) == true;
 
 
     useEffect(() => {
@@ -28,6 +30,7 @@ function Home() {
                 setLoader(false);
             })
     }, [])
+    console.log(featured);
 
 
     return (

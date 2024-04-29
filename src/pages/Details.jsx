@@ -13,8 +13,6 @@ function Details() {
     const theme = useContext(ThemeContext);
 
 
-
-
     useEffect(() => {
         setLoader(true);
         if (!params.id) {
@@ -30,7 +28,7 @@ function Details() {
                     return;
                 }
                 setData(d);
-                setSelectedColor(d.data.attributes.colors[0]); // colors
+                setSelectedColor(d.data.attributes.colors[0]);
 
             })
             .catch(err => {
@@ -45,6 +43,22 @@ function Details() {
     const handleColorSelect = (color) => {
         setSelectedColor(color);
     };
+
+    function handleAddBag() {
+        const productsData = {
+            id: data.data.id,
+            title: data.data.attributes.title,
+            price: data.data.attributes.price,
+            color: selectedColor,
+            amount: count,
+            image: data.data.attributes.image,
+            company: data.data.attributes.company
+        }
+
+        const storedProducts = JSON.parse(localStorage.getItem('cart')) || [];
+        storedProducts.push(productsData);
+        localStorage.setItem('cart', JSON.stringify(storedProducts));
+    }
 
     return (
         <div className="w-[1106px] mx-auto py-20 ">
@@ -99,7 +113,7 @@ function Details() {
                                                     <option value={5}>5</option>
                                                 </select>
                                             </div>
-                                            <button className="btn btn-active btn-primary mt-8 uppercase">Add to bag</button>
+                                            <button className="btn btn-active btn-primary mt-8 uppercase" onClick={handleAddBag}>Add to bag</button>
 
                                         </div>
                                     </div>
