@@ -11,7 +11,6 @@ function Cart() {
         if (storedCart) {
             const cartData = JSON.parse(storedCart);
             setData(cartData);
-
         }
 
 
@@ -23,8 +22,6 @@ function Cart() {
         localStorage.setItem('cart', JSON.stringify(newData));
     }
 
-
-
     return (
         <div className="w-[1106px] mx-auto mt-20">
             <h1 className={`text-3xl font-medium tracking-wider capitalize mb-5 ${theme.theme == 'light' ? 'text-text1' : 'text-white'}`}>Shopping Cart</h1>
@@ -32,11 +29,12 @@ function Cart() {
 
             <div className="flex">
                 <div>
+                    <div className="w-[770px]"></div>
                     {data.map((item, index) => (
-                        <div key={index} className="product-detail h-[200px] flex items-center justify-between">
+                        <div key={index} className="product-detail  h-[200px] flex items-center justify-between">
                             <div className="flex items-start">
                                 <div className="img mr-16">
-                                    <img className="h-24 w-24 rounded-lg sm:h-32 sm:w-32 object-cover" src={item.image} alt={item.title} />
+                                    <img className="h-24 w-24 rounded-lg sm:h-32 sm:object-cover" src={item.image} alt={item.title} />
                                 </div>
 
                                 <div className={`flex flex-col gap-3 mr-32 ${theme.theme == 'light' ? 'text-text1' : 'text-white'} font-semibold`}>
@@ -60,12 +58,11 @@ function Cart() {
 
                             </div>
 
-                            <hr />
                         </div>
                     ))}
                 </div>
                 <div>
-                    <div className={`w-[325px] mt-24 flex flex-col  total-price p-8 rounded-xl ${theme.theme == 'light' ? 'bg-bgHeader' : 'bg-dMain'}`}>
+                    <div className={`w-[325px] mt-24 flex flex-col total-price p-8 rounded-xl ${theme.theme == 'light' ? 'bg-bgHeader' : 'bg-dMain'}`}>
                         <div className="flex items-center justify-between">
                             <h1 className="text-xs text-text1 mb-3">Subtotal</h1>
                             <h2>${count}</h2>

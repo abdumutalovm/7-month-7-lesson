@@ -1,5 +1,5 @@
-import toast, { Toaster } from 'react-hot-toast';
-
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams, Link } from "react-router-dom";
 import { useContext } from "react";
@@ -14,8 +14,7 @@ function Details() {
     const navigate = useNavigate();
     const theme = useContext(ThemeContext);
 
-    const notify = () => toast('Item added to cart ✔');
-
+    const notify = () => toast('Item added to cart');
 
     useEffect(() => {
         setLoader(true);
@@ -33,6 +32,7 @@ function Details() {
                 }
                 setData(d);
                 setSelectedColor(d.data.attributes.colors[0]);
+                console.log(d);
 
             })
             .catch(err => {
@@ -56,13 +56,20 @@ function Details() {
             color: selectedColor,
             amount: count,
             image: data.data.attributes.image,
-            company: data.data.attributes.company
+            company: data.data.attributes.company,
+            tax: 5,
+            shipping: data.data.attributes.shipping
         }
 
         const storedProducts = JSON.parse(localStorage.getItem('cart')) || [];
         storedProducts.push(productsData);
         localStorage.setItem('cart', JSON.stringify(storedProducts));
-        notify()
+        setTimeout(() => {
+            setTimeout(() => {
+                toast.success("This product is add");
+            }, 200);
+        }, 600);
+        navigate('/cart')
     }
 
     return (
@@ -119,13 +126,7 @@ function Details() {
                                                 </select>
                                             </div>
                                             <button className="btn btn-active btn-primary mt-8 uppercase" onClick={handleAddBag}>Add to bag</button>
-                                            <Toaster toastOptions={{
-                                                className: '',
-                                                style: {
-                                                    backgroundColor: 'green',
-                                                    color: 'white'
-                                                }
-                                            }} />
+
                                         </div>
                                     </div>
                                 </>

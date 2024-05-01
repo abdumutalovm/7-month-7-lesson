@@ -15,7 +15,6 @@ function Home() {
     const [featured, setFeatured] = useState([]);
     const [loader, setLoader] = useState(false);
 
-    const grid = useContext(GridContext) == true;
 
 
     useEffect(() => {
